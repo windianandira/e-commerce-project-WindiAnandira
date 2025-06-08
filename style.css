@@ -1,0 +1,358 @@
+/* Reset dasar */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'inter', sans-serif;
+  line-height: 1.6;
+  background-color: #f4f4f4;
+  color: #333;
+  margin: 0;
+  padding: 0;
+}
+
+header {
+  background-color: #2c3e50;
+  color: white;
+  padding: 1rem;
+  width: 100%;
+}
+
+header h1 {
+  margin-bottom: 0.5rem;
+}
+
+/* === NAVIGASI DESKTOP === */
+nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+h1, h2, h3 {
+  font-weight: 600;
+}
+
+.nav-menu {
+  display: flex;
+  gap: 1.5rem;
+  list-style: none;
+  padding-left: 0;
+  margin: 0;
+  transition: max-height 0.3s ease, opacity 0.3s ease;
+  overflow: hidden;
+  font-weight: 600;
+}
+
+.nav-menu li a {
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+  position: relative;
+}
+
+/* Hover effect */
+.nav-menu li a:hover::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 2px;
+  background-color: #fff;
+  left: 0;
+  bottom: -4px;
+}
+
+.hamburger {
+  display: none;
+  font-size: 1.8rem;
+  cursor: pointer;
+  color: white;
+}
+
+.keranjang-icon {
+  width: 24px;
+  height: 24px;
+  object-fit: contain;
+  margin-right: 6px;
+  vertical-align: middle;
+}
+
+.cart-icon {
+  position: relative;
+  display: inline-block;
+}
+
+#cart-count {
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  background: red;
+  color: white;
+  padding: 2px 6px;
+  border-radius: 50%;
+  font-size: 0.7rem;
+}
+
+main {
+  margin-top: 2rem;
+}
+
+h2 {
+  margin-bottom: 1rem;
+}
+
+.produk-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+}
+
+.produk {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background-color: white;
+  padding: 1rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  min-height: 100%;
+  transition: transform 0.3s ease;
+}
+
+.produk:hover {
+  transform: translateY(-4px);
+}
+
+.produk img {
+  margin: 0 auto;
+}
+
+.produk-bottom {
+  margin-top: auto;
+  padding-top: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 1px solid #eee;
+}
+
+.produk h3 {
+  margin-bottom: 0.5rem;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1rem;
+}
+
+.produk p {
+  font-weight: 400;
+}
+.harga {
+  font-weight: bold;
+  color: #f0473b;
+}
+
+.beli-button {
+  background-color: #2c3e50;
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.9rem;
+}
+
+.beli-button:hover {
+  background-color: #219150;
+}
+
+.popup-notif {
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
+  background-color: #27ae60;
+  color: white;
+  padding: 1rem 1.5rem;
+  border-radius: 5px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+  z-index: 1000;
+}
+
+.popup-notif.show {
+  opacity: 1;
+  visibility: visible;
+}
+
+section {
+  margin-bottom: 3rem;
+}
+
+#kategori {
+  margin-top: 2rem;
+  background: rgba(132, 203, 231, 0.315);
+  padding: 2rem;
+  border-radius: 8px;
+}
+
+#kategori ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  list-style: none;
+  padding: 0;
+  margin: 1rem 0 0 0;
+  justify-content: center;
+}
+
+#kategori li {
+  background-color: #3498db;
+  color: white;
+  padding: 0.75rem 1.25rem;
+  border-radius: 5px;
+  font-weight: 600;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  cursor: pointer;
+}
+
+#kategori li:hover {
+  background-color: #2980b9;
+  transform: scale(1.05);
+}
+
+#tentang-kami {
+  margin-top: 2rem;
+  background: rgba(132, 203, 231, 0.315);
+  padding: 3rem;
+  border-radius: 8px;
+}
+
+footer {
+  background-color: #2c3e50;
+  color: white;
+  text-align: center;
+  padding: 1rem;
+  margin-top: 2rem;
+}
+
+/* === RESPONSIVE PONSEL === */
+
+@media (max-width: 768px) {
+  .hamburger {
+    display: block;
+  }
+
+  .nav-menu {
+    flex-direction: column;
+    width: 100%;
+    background-color: #2c3e50;
+    max-height: 0;
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  .nav-menu.show {
+    max-height: 500px;
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  .nav-menu li {
+    padding: 0.75rem 1rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  nav {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .cart-icon {
+    margin-left: auto;
+    padding: 0.5rem 1rem;
+  }
+
+  .container {
+    padding: 1rem;
+  }
+
+  header {
+    padding: 1rem;
+    text-align: center;
+  }
+
+  #kategori ul {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+/*===TABLET RESPONSIVE===*/
+@media (min-width: 769px) and (max-width: 1199px) {
+  .container {
+    padding: 1.5rem;
+  }
+
+  .produk-list {
+    grid-template-columns: repeat(2, 1fr); /* tampilkan 2 produk per baris */
+  }
+
+  .nav-menu {
+    gap: 1.25rem;
+  }
+
+  h1 {
+    font-size: 2rem;
+  }
+
+  h2 {
+    font-size: 1.5rem;
+  }
+
+  .produk h3 {
+    font-size: 1.1rem;
+  }
+
+  body {
+    font-size: 1rem;
+  }
+}
+
+/*===DESKTOP RESPONSIVE===*/
+@media (min-width: 1200px) {
+  .container {
+    padding: 1.5rem;
+  }
+
+  .produk-list {
+    grid-template-columns: repeat(2, 2fr); /* tampilkan 3 produk per baris */
+  }
+
+  .nav-menu {
+    gap: 2rem;
+  }
+
+  h1 {
+    font-size: 2rem;
+  }
+
+  h2 {
+    font-size: 2rem;
+  }
+
+  .produk h3 {
+    font-size: 1rem;
+  }
+
+  body {
+    font-size: 1rem;
+  }
+}

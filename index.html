@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Halaman E-commerce Sederhana</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  
+</head>
+<body>
+
+  <header>
+    <h1>dorbishop.</h1>
+    <nav>
+  <div class="hamburger" onclick="toggleMenu()">☰</div>
+  <ul class="nav-menu" id="navMenu">
+    <li><a href="#">Beranda</a></li>
+    <li><a href="#">Produk</a></li>
+    <li><a href="#">Kontak</a></li>
+  </ul>
+<div class="cart-icon">
+  <img src="shopping-cart.svg" alt="Keranjang" class="keranjang-icon">
+  <span id="cart-count">0</span>
+</div>
+</nav>
+  </header>
+
+  <main>
+    <div class="container">
+    <section id="produk-terbaru">
+      <h2>Produk Terbaru</h2>
+
+      <div class="produk-list">
+        <article class="produk">
+          <h3>Celana Jeans Slim Fit</h3>
+            <img src="https://id-test-11.slatic.net/p/f3835be146d98c2c513bcbe888900b91.jpg" alt="Produk 1" height="150" width="150" >
+          <p>Celana jeans dengan potongan yang ramping, mengikuti lekuk tubuh tetapi tidak terlalu ketat seperti skinny jeans. Potongan ini memberikan siluet yang lebih modern dan stylish, serta tetap nyaman untuk dikenakan sehari-hari.</p>
+          <div class="produk-bottom">
+          <p class="harga">Rp 120.000</p>
+          <button class="beli-button" onclick="tambahKeKeranjang()">Beli</button>
+          </div>
+        </article>
+
+        <article class="produk">
+          <h3>Celana Chino Kasual</h3>
+          <img src="https://img.freepik.com/premium-photo/hallo-this-look-model-you-photo-asset_891936-2466.jpg?w=740" alt="Produk 1" height="150" width="150" >
+          <p>Celana chino adalah celana kasual yang terbuat dari kain katun twill, dengan potongan yang menyerupai celana kerja atau celana bahan. Celana ini memiliki saku depan dan belakang, serta biasanya memiliki potongan lurus atau sedikit slim fit</p>
+          <div class="produk-bottom">
+          <p class="harga">Rp 150.000</p>
+          <button class="beli-button" onclick="tambahKeKeranjang()">Beli</button>
+          </div>
+        </article>
+
+        <article class="produk">
+          <h3>Celana Cargo</h3>
+          <img src="https://images.tokopedia.net/img/cache/700/hDjmkQ/2023/5/15/3076ad94-66ef-4b18-b8d9-0b5dc9a27dae.jpg" alt="Produk 2" height="150" width="150">
+          <p>Celana cargo adalah celana berpotongan longgar yang memiliki banyak kantong, terutama di samping, paha, dan juga di bagian belakang.</p>
+          <div class="produk-bottom">
+          <p class="harga">Rp 170.000</p>
+          <button class="beli-button" onclick="tambahKeKeranjang()">Beli</button>
+          </div>
+        </article>
+
+        <article class="produk">
+          <h3>Celana Pdl Army</h3>
+           <img src="https://images.tokopedia.net/img/cache/700/VqbcmM/2021/2/2/2854afca-c4e4-4ed4-8b32-af606a8f0036.jpg" alt="Produk 2" height="150" width="150">
+          <p>Celana PDL (Pakaian Dinas Lapangan) adalah celana yang dirancang untuk kegiatan di lapangan atau kegiatan di luar ruangan, seringkali digunakan sebagai seragam atau bagian dari pakaian dinas.</p>
+          <div class="produk-bottom">
+          <p class="harga">Rp 150.000</p>
+          <button class="beli-button" onclick="tambahKeKeranjang()">Beli</button>
+        </div>
+        </article>
+      </div>
+      </div>
+    </section>
+
+    <main>
+    <div class="container">
+    <section id="kategori">
+      <h2>Kategori</h2>
+      <ul>
+        <li>Celana Jeans</li>
+        <li>Celana Chino</li>
+        <li>Celana Cargo</li>
+        <li>Celana Pdl</li>
+      </ul>
+    </section>
+
+
+    <section id="tentang-kami">
+      <h2>Tentang Kami</h2>
+      <p>dorbi shop adalah toko online yang menyediakan berbagai jenis celana pria dan wanita dengan kualitas terbaik dan harga terjangkau.</p>
+    </section>
+    </div>
+    </main>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 dorbishop. Hak Cipta Dilindungi.</p>
+  </footer>
+
+<script src="script.js"></script>
+<div id="popup-notif" class="popup-notif">Produk berhasil ditambahkan ke keranjang</div>
+</body>
+</html>
