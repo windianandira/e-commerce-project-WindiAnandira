@@ -24,6 +24,9 @@ header {
 header h1 {
   margin-bottom: 0.5rem;
 }
+header h1 span.shop-highlight {
+  color: #66d9f0; /* biru muda */
+}
 
 /* === NAVIGASI DESKTOP === */
 nav {
