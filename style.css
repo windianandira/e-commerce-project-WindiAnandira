@@ -103,6 +103,35 @@ h1, h2, h3 {
 main {
   margin-top: 2rem;
 }
+#kontak {
+  margin-top: 2rem;
+  padding: 2rem;
+  background: rgba(132, 203, 231, 0.15);
+  border-radius: 8px;
+  text-align: center;
+}
+
+.kontak-list {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 2rem;
+  margin-top: 1rem;
+}
+
+.kontak-list a {
+  text-decoration: none;
+  color: #2c3e50;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.kontak-list img {
+  width: 32px;
+  height: 32px;
+}
 
 h2 {
   margin-bottom: 1rem;
