@@ -22,6 +22,11 @@ function updateJumlahTotal() {
   document.getElementById("cart-count").textContent = jumlah;
 }
 
+function toggleMenu() {
+  const menu = document.getElementById("navMenu");
+  menu.classList.toggle("show");
+}
+
 function tampilkanNotifikasi() {
   const notif = document.getElementById("popup-notif");
   notif.classList.add("show");

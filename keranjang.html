@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Keranjang Belanja</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .keranjang-list {
+      margin-top: 2rem;
+    }
+
+    .keranjang-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem;
+      margin-bottom: 1rem;
+      background-color: white;
+      border-radius: 8px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+    }
+
+    .keranjang-item h4 {
+      margin-bottom: 0.5rem;
+      color: #2c3e50;
+    }
+
+    .keranjang-item p {
+      margin: 0.2rem 0;
+      font-size: 0.95rem;
+    }
+
+    .keranjang-buttons {
+      display: flex;
+      gap: 0.5rem;
+    }
+
+    .keranjang-buttons button {
+      background-color: #2c3e50;
+      color: white;
+      border: none;
+      padding: 0.4rem 0.75rem;
+      border-radius: 6px;
+      font-size: 0.9rem;
+      cursor: pointer;
+    }
+
+    .keranjang-buttons button:hover {
+      background-color: #3498db;
+    }
+
+    .checkout-form {
+      background-color: #f9f9f9;
+      padding: 1.5rem;
+      border-radius: 8px;
+      margin-top: 2rem;
+    }
+
+    .checkout-form h3 {
+      margin-bottom: 1rem;
+      color: #2c3e50;
+    }
+
+    .checkout-form label {
+      display: block;
+      margin-bottom: 0.75rem;
+    }
+
+    .checkout-button {
+      margin-top: 1rem;
+      padding: 0.75rem 1.5rem;
+      background: #27ae60;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 1rem;
+    }
+
+    .checkout-button:hover {
+      background-color: #219150;
+    }
+
+    .total-harga {
+      text-align: right;
+      font-weight: bold;
+      font-size: 1.2rem;
+      color: #2c3e50;
+      margin-top: 1rem;
+    }
+
+    .back-button {
+      text-align: center;
+      margin-top: 2rem;
+    }
+
+    .back-button a {
+      padding: 0.7rem 1.5rem;
+      background-color: #3498db;
+      color: white;
+      border-radius: 6px;
+      text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container header-container">
+      <h1 class="logo">dorbi<span class="shop-highlight">shop.</span></h1>
+      <nav>
+        <div class="hamburger" onclick="toggleMenu()">☰</div>
+        <ul class="nav-menu" id="navMenu">
+          <li><a href="index.html">Beranda</a></li>
+          <li><a href="index.html#produk-terbaru">Produk</a></li>
+          <li><a href="index.html#kontak">Kontak</a></li>
+        </ul>
+        <a href="keranjang.html" class="cart-icon">
+          <img src="shopping-cart.svg" alt="Keranjang" class="keranjang-icon">
+          <span id="cart-count">0</span>
+        </a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <div class="container">
+      <h2>Keranjang Belanja Anda</h2>
+      <div class="keranjang-list" id="daftarKeranjang"></div>
+      <div class="total-harga" id="totalHarga">Total: Rp 0</div>
+
+      <form id="checkoutForm" class="checkout-form">
+        <h3>Pilih Metode Pembayaran:</h3>
+        <label><input type="radio" name="metode" value="Transfer Bank" checked> Transfer Bank</label>
+        <label><input type="radio" name="metode" value="e-Wallet"> e-Wallet</label>
+        <button type="submit" class="checkout-button">Checkout</button>
+      </form>
+
+      <div class="back-button">
+        <a href="index.html">← Kembali ke Toko</a>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 dorbishop. Hak Cipta Dilindungi.</p>
+  </footer>
+
+  <script>
+    let keranjang = JSON.parse(localStorage.getItem('keranjang')) || [];
+
+    function renderKeranjang() {
+      const container = document.getElementById('daftarKeranjang');
+      const totalTag = document.getElementById('totalHarga');
+      container.innerHTML = '';
+      let total = 0;
+
+      keranjang.forEach((item, index) => {
+        const angkaHarga = parseInt(item.harga.replace(/\D/g, ''));
+        const subtotal = angkaHarga * item.jumlah;
+        total += subtotal;
+
+        const el = document.createElement('div');
+        el.className = 'keranjang-item';
+        el.innerHTML = `
+          <div>
+            <h4>${item.nama}</h4>
+            <p>Harga: ${item.harga}</p>
+            <p>Jumlah: ${item.jumlah}</p>
+            <p>Subtotal: Rp ${subtotal.toLocaleString()}</p>
+          </div>
+          <div class="keranjang-buttons">
+            <button onclick="ubahJumlah(${index}, 1)">➕</button>
+            <button onclick="ubahJumlah(${index}, -1)">➖</button>
+            <button onclick="hapus(${index})">❌</button>
+          </div>
+        `;
+        container.appendChild(el);
+      });
+
+      totalTag.textContent = `Total: Rp ${total.toLocaleString()}`;
+      localStorage.setItem('keranjang', JSON.stringify(keranjang));
+    }
+
+    function ubahJumlah(index, delta) {
+      keranjang[index].jumlah += delta;
+      if (keranjang[index].jumlah < 1) keranjang.splice(index, 1);
+      renderKeranjang();
+    }
+
+    function hapus(index) {
+      keranjang.splice(index, 1);
+      renderKeranjang();
+    }
+
+    document.getElementById('checkoutForm').addEventListener('submit', function (e) {
+      e.preventDefault();
+      if (keranjang.length === 0) {
+        alert('Keranjang kosong. Tambahkan produk terlebih dahulu.');
+        return;
+      }
+
+      const metode = document.querySelector('input[name="metode"]:checked').value;
+      alert(`Checkout berhasil!\nMetode pembayaran: ${metode}\nJumlah item: ${keranjang.length}`);
+
+      keranjang = [];
+      localStorage.removeItem('keranjang');
+      renderKeranjang();
+    });
+
+    renderKeranjang();
+  </script>
+</body>
+</html>
